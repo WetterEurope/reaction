@@ -1,5 +1,4 @@
-const yourID = "393096318123245578";
-const setupCMD = "!createrolemessage"
+const ownerID = "393096318123245578";
 let initialMessage = `**React to the message below to receive the associated role. If you would like to remove the role, simply remove your reaction!**`;
 const roles = ["Giveawayping", "Overwatch", "Rocket League"];
 const reactions = ["457479319539679233", "549333965983449095", "549335222030696512"];
@@ -28,7 +27,8 @@ function generateMessages(){
 
 
 bot.on("message", message => {
-    if (message.author.id == yourID && message.content.toLowerCase() == setupCMD){
+    if (message.content.toLowerCase() === `<@${bot.user.id}> createrolemsg`){
+        if(message.author.id !== ownerID) return message.channel.send('DM <@393096318123245578> to start the setup.');
         var toSend = generateMessages();
         let mappedArray = [[toSend[0], false], ...toSend.slice(1).map( (message, idx) => [message, reactions[idx]])];
         for (let mapObj of mappedArray){
@@ -43,8 +43,12 @@ bot.on("message", message => {
       message.channel.send(`My Owner is <@393096318123245578>. Write a message to him, to start the setup.`);
     }
   
-    if(message.content.toLowerCase() === `<@${bot.user.id}> ping` || message.content.toLowerCase() === `<@${bot.user.id}>ping`){
+    if(message.content.toLowerCase() === `<@${bot.user.id}> ping` || message.content.toLowerCase().endsWith('ping')){
       message.channel.send(`Pong! **${Math.round(bot.ping)}** \`ms\``);
+    }
+    
+    if(message.content.toLowerCase() === `<@${bot.user.id}> ping` || message.content.toLowerCase().startsWith(`<@${bot.user.id}> help`)) {
+       return
     }
 })
 
