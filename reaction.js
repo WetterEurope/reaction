@@ -109,10 +109,10 @@ try{
 
 async function errRole(memberObj, channel, role, server) {
 try{
-  await memberObj.send(`🚫 | **ERROR!** The role **${role}** in server **${server}**.\n`+
+  await memberObj.send(`🚫 | **ERROR!** The role **${role}** in server **${server}** does not exist.\n`+
                        `Message the owner of the server & bot to fix the problem.`)
 }catch(e){
-        channel.send(`🚫 | **ERROR!** The role **${role}** in server **${server}**.\n`+
+        channel.send(`🚫 | **ERROR!** The role **${role}** in server **${server}** does not exist.\n`+
                      `Message the owner of the server & bot to fix the problem.`)
 }
 }
