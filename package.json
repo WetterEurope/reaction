@@ -1,0 +1,16 @@
+{
+  "name": "test",
+  "version": "2.2.0",
+  "description": "joa",
+  "main": "reaction.js",
+  "scripts": {
+    "start": "node reaction.js"
+  },
+  "engines": {
+    "node": "10.13.0"
+  },
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "express": "^4.16.4"
+  }
+}
